@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppFloat = () => {
-  const link = "https://wa.me/918605601801?text=Hi!%20I%20want%20to%20order%20from%20Jimmy%20Fooddzz!";
+  const link = "https://wa.me/+918605601801?text=Hi!%20I%20want%20to%20order%20from%20Jimmy%20Fooddzz!";
 
   return (
     <motion.a

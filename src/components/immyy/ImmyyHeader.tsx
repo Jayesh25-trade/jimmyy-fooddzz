@@ -7,7 +7,7 @@ import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { label: "Home", to: "/" },
-  { label: "All Snacks", to: "/category/all" },
+  { label: "All Products", to: "/category/all" },
   { label: "Chips", to: "/category/chips" },
   { label: "Nuts", to: "/category/nuts" },
   { label: "Cookies", to: "/category/cookies" },
@@ -19,40 +19,37 @@ const ImmyyHeader = () => {
   const { totalItems, setIsCartOpen } = useCart();
 
   return (
-    <header className="sticky top-0 z-40 glass">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="font-heading font-bold text-xl md:text-2xl text-gradient-primary">
-          Immyy Fooddzz
+    <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+        <Link to="/" className="font-heading font-bold text-base tracking-wide text-foreground">
+          Jimmy Fooddzz
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="text-muted-foreground hover:text-foreground font-body text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground font-body text-xs tracking-wide transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Right side */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Button
             variant="ghost"
             size="icon"
-            className="relative"
+            className="relative h-9 w-9"
             onClick={() => setIsCartOpen(true)}
           >
-            <ShoppingBag className="h-5 w-5" />
+            <ShoppingBag className="h-4 w-4" />
             {totalItems > 0 && (
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs font-heading font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                className="absolute -top-0.5 -right-0.5 bg-accent text-accent-foreground text-[9px] font-heading font-bold rounded-full w-4 h-4 flex items-center justify-center"
               >
                 {totalItems}
               </motion.span>
@@ -61,30 +58,29 @@ const ImmyyHeader = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden h-9 w-9"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile nav */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
-            className="md:hidden border-t border-border glass"
+            className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="p-4 space-y-2">
+            <div className="p-4 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="block text-muted-foreground hover:text-foreground font-body py-2 transition-colors"
+                  className="block text-muted-foreground hover:text-foreground font-body text-sm py-2 transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}

@@ -3,44 +3,35 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
-  const whatsappLink = "https://wa.me/919999999999?text=Hi!%20I%20want%20to%20order%20snacks%20from%20Immyy%20Fooddzz!";
+  const whatsappLink = "https://wa.me/919999999999?text=Hi!%20I%20want%20to%20order%20snacks%20from%20Jimmy%20Fooddzz!";
 
   return (
     <section className="py-20 px-4">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center">
         <motion.div
-          className="glass rounded-3xl p-10 md:p-16 relative overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          className="glass rounded-lg p-10 md:p-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
-          <div className="relative z-10">
-            <motion.span
-              className="text-6xl block mb-6"
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              🍿
-            </motion.span>
-            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4 text-foreground">
-              Ready to Snack?
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
-              Skip the complicated checkout. Just tap, order on WhatsApp, and get your favorite snacks delivered!
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-green-500 hover:bg-green-600 text-white font-heading font-semibold text-lg px-10 py-6 rounded-full hover:scale-105 transition-transform duration-300"
-            >
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Order on WhatsApp Now
-              </a>
-            </Button>
-          </div>
+          <p className="text-accent font-heading text-xs tracking-[0.3em] uppercase mb-4">Ready to Order?</p>
+          <h2 className="font-heading text-2xl md:text-4xl font-bold mb-4 text-foreground">
+            Skip the Checkout Queue
+          </h2>
+          <p className="text-muted-foreground text-sm max-w-md mx-auto mb-8 leading-relaxed">
+            Just tap, message us on WhatsApp, and get your favorite snacks delivered. It's that simple.
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-medium text-sm px-10 py-6 tracking-wide"
+          >
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Order on WhatsApp
+            </a>
+          </Button>
         </motion.div>
       </div>
     </section>

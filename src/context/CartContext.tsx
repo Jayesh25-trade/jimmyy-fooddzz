@@ -66,11 +66,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const getWhatsAppMessage = () => {
     if (items.length === 0) return "";
-    let msg = "🛒 *Order from Immyy Fooddzz*\n\n";
+    let msg = "*Order from Jimmy Fooddzz*\n\n";
     items.forEach((item) => {
-      msg += `▪ ${item.product.name} x${item.quantity} — ₹${item.product.price * item.quantity}\n`;
+      msg += `${item.product.name} x${item.quantity} — ₹${item.product.price * item.quantity}\n`;
     });
-    msg += `\n💰 *Total: ₹${totalPrice}*\n\nPlease confirm my order! 🙏`;
+    msg += `\n*Total: ₹${totalPrice}*\n\nPlease confirm my order.`;
     return msg;
   };
 

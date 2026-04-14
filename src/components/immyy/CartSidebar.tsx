@@ -10,16 +10,14 @@ const CartSidebar = () => {
     <AnimatePresence>
       {isCartOpen && (
         <>
-          {/* Overlay */}
           <motion.div
-            className="fixed inset-0 bg-black/60 z-50"
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsCartOpen(false)}
           />
 
-          {/* Sidebar */}
           <motion.div
             className="fixed right-0 top-0 h-full w-full max-w-md bg-background border-l border-border z-50 flex flex-col"
             initial={{ x: "100%" }}
@@ -27,24 +25,22 @@ const CartSidebar = () => {
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
           >
-            {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <h2 className="font-heading font-bold text-xl flex items-center gap-2">
-                <ShoppingBag className="h-5 w-5" />
-                Your Cart ({totalItems})
+              <h2 className="font-heading font-medium text-sm flex items-center gap-2 text-foreground">
+                <ShoppingBag className="h-4 w-4" />
+                Cart ({totalItems})
               </h2>
-              <Button variant="ghost" size="icon" onClick={() => setIsCartOpen(false)}>
-                <X className="h-5 w-5" />
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setIsCartOpen(false)}>
+                <X className="h-4 w-4" />
               </Button>
             </div>
 
-            {/* Items */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {items.length === 0 ? (
                 <div className="text-center py-16">
-                  <span className="text-6xl block mb-4">🛒</span>
-                  <p className="text-muted-foreground text-lg">Your cart is empty</p>
-                  <p className="text-muted-foreground text-sm mt-1">Add some delicious snacks!</p>
+                  <ShoppingBag className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-muted-foreground text-sm">Your cart is empty</p>
+                  <p className="text-muted-foreground text-xs mt-1">Add some premium snacks</p>
                 </div>
               ) : (
                 <AnimatePresence>
@@ -52,45 +48,30 @@ const CartSidebar = () => {
                     <motion.div
                       key={item.product.id}
                       layout
-                      initial={{ opacity: 0, x: 30 }}
+                      initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -30, height: 0 }}
-                      className="glass rounded-xl p-3 flex gap-3"
+                      exit={{ opacity: 0, x: -20, height: 0 }}
+                      className="glass rounded-lg p-3 flex gap-3"
                     >
                       <img
                         src={item.product.image}
                         alt={item.product.name}
-                        className="w-20 h-20 rounded-lg object-cover"
+                        className="w-16 h-16 rounded object-cover"
                       />
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-heading font-semibold text-foreground text-sm truncate">{item.product.name}</h4>
-                        <p className="text-muted-foreground text-xs">{item.product.weight}</p>
-                        <p className="text-foreground font-heading font-bold mt-1">₹{item.product.price * item.quantity}</p>
+                        <h4 className="font-heading font-medium text-foreground text-xs truncate">{item.product.name}</h4>
+                        <p className="text-muted-foreground text-[10px]">{item.product.weight}</p>
+                        <p className="text-foreground font-heading font-semibold text-sm mt-1">₹{item.product.price * item.quantity}</p>
                         <div className="flex items-center gap-2 mt-2">
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-7 w-7 rounded-full"
-                            onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                          >
+                          <Button variant="outline" size="icon" className="h-6 w-6 rounded" onClick={() => updateQuantity(item.product.id, item.quantity - 1)}>
                             <Minus className="h-3 w-3" />
                           </Button>
-                          <span className="font-heading font-semibold text-sm w-6 text-center">{item.quantity}</span>
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-7 w-7 rounded-full"
-                            onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                          >
+                          <span className="font-heading font-medium text-xs w-5 text-center">{item.quantity}</span>
+                          <Button variant="outline" size="icon" className="h-6 w-6 rounded" onClick={() => updateQuantity(item.product.id, item.quantity + 1)}>
                             <Plus className="h-3 w-3" />
                           </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7 ml-auto text-destructive hover:text-destructive"
-                            onClick={() => removeFromCart(item.product.id)}
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
+                          <Button variant="ghost" size="icon" className="h-6 w-6 ml-auto text-destructive hover:text-destructive" onClick={() => removeFromCart(item.product.id)}>
+                            <Trash2 className="h-3 w-3" />
                           </Button>
                         </div>
                       </div>
@@ -100,19 +81,18 @@ const CartSidebar = () => {
               )}
             </div>
 
-            {/* Footer */}
             {items.length > 0 && (
               <div className="border-t border-border p-4 space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Total</span>
-                  <span className="font-heading font-bold text-2xl text-foreground">₹{totalPrice}</span>
+                  <span className="text-muted-foreground text-sm">Total</span>
+                  <span className="font-heading font-bold text-xl text-foreground">₹{totalPrice}</span>
                 </div>
                 <Button
                   asChild
-                  className="w-full bg-green-500 hover:bg-green-600 text-white font-heading font-semibold text-lg py-6 rounded-full hover:scale-[1.02] transition-transform"
+                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-medium text-sm py-5"
                 >
                   <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-5 w-5" />
+                    <MessageCircle className="mr-2 h-4 w-4" />
                     Checkout via WhatsApp
                   </a>
                 </Button>

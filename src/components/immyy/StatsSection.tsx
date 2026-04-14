@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { label: "Happy Customers", value: 15000, suffix: "+", emoji: "😊" },
-  { label: "Orders Served", value: 50000, suffix: "+", emoji: "📦" },
-  { label: "Products", value: 120, suffix: "+", emoji: "🍿" },
-  { label: "5-Star Reviews", value: 4800, suffix: "+", emoji: "⭐" },
+  { label: "Happy Customers", value: 15000, suffix: "+" },
+  { label: "Orders Delivered", value: 50000, suffix: "+" },
+  { label: "Products", value: 120, suffix: "+" },
+  { label: "5-Star Reviews", value: 4800, suffix: "+" },
 ];
 
 const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -31,7 +31,7 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
   }, [inView, value]);
 
   return (
-    <span ref={ref} className="font-heading text-4xl md:text-5xl font-bold text-foreground">
+    <span ref={ref} className="font-heading text-3xl md:text-4xl font-bold text-foreground">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -39,23 +39,20 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
 
 const StatsSection = () => {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5" />
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="py-20 px-4">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="text-center glass rounded-2xl p-6"
-              initial={{ opacity: 0, y: 30 }}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <span className="text-4xl mb-3 block">{stat.emoji}</span>
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="text-muted-foreground text-sm mt-2 font-body">{stat.label}</p>
+              <p className="text-muted-foreground text-xs mt-2 font-body tracking-wide">{stat.label}</p>
             </motion.div>
           ))}
         </div>

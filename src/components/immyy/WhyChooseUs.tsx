@@ -2,48 +2,43 @@ import { motion } from "framer-motion";
 import { Truck, ShieldCheck, Leaf, Zap, Heart, Award } from "lucide-react";
 
 const features = [
-  { icon: Leaf, title: "100% Natural", desc: "No artificial colors, no preservatives. Just real ingredients.", color: "text-green-400" },
-  { icon: Truck, title: "Fast Delivery", desc: "Order via WhatsApp, delivered to your doorstep same day.", color: "text-blue-400" },
-  { icon: ShieldCheck, title: "Quality Assured", desc: "FSSAI certified with rigorous quality checks.", color: "text-purple-400" },
-  { icon: Zap, title: "Bold Flavors", desc: "Unique, exciting flavors you won't find anywhere else.", color: "text-yellow-400" },
-  { icon: Heart, title: "Made with Love", desc: "Small-batch crafted with passion and dedication.", color: "text-red-400" },
-  { icon: Award, title: "Award Winning", desc: "Recognized as one of the top snack brands of 2024.", color: "text-orange-400" },
+  { icon: Leaf, title: "100% Natural", desc: "No artificial colors, no preservatives. Just real, honest ingredients." },
+  { icon: Truck, title: "Fast Delivery", desc: "Order via WhatsApp, delivered to your doorstep the same day." },
+  { icon: ShieldCheck, title: "Quality Assured", desc: "FSSAI certified with rigorous quality checks at every step." },
+  { icon: Zap, title: "Bold Flavors", desc: "Unique, exciting flavors crafted by expert food artisans." },
+  { icon: Heart, title: "Made with Care", desc: "Small-batch crafted with passion and meticulous attention." },
+  { icon: Award, title: "Award Winning", desc: "Recognized as one of the top artisan snack brands of 2024." },
 ];
 
 const WhyChooseUs = () => {
   return (
     <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
-            Why <span className="text-gradient-primary">Choose Us?</span>
+          <p className="text-accent font-heading text-xs tracking-[0.3em] uppercase mb-3">Why Us</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            The Jimmy Difference
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            We're not just a snack brand — we're a flavor revolution.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              className="glass rounded-2xl p-6 group hover:border-primary/30 transition-all duration-300 cursor-default"
-              initial={{ opacity: 0, y: 40 }}
+              className="glass rounded-lg p-6 group hover:border-accent/20 transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <div className={`${f.color} mb-4`}>
-                <f.icon className="h-10 w-10 group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="font-heading font-semibold text-foreground text-xl mb-2">{f.title}</h3>
-              <p className="text-muted-foreground text-sm">{f.desc}</p>
+              <f.icon className="h-5 w-5 text-accent mb-4" />
+              <h3 className="font-heading font-medium text-foreground text-sm mb-2">{f.title}</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -1,25 +1,31 @@
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
-import LargeHero from "../components/content/LargeHero";
-import FiftyFiftySection from "../components/content/FiftyFiftySection";
-import OneThirdTwoThirdsSection from "../components/content/OneThirdTwoThirdsSection";
-import ProductCarousel from "../components/content/ProductCarousel";
-import EditorialSection from "../components/content/EditorialSection";
+import ImmyyHeader from "@/components/immyy/ImmyyHeader";
+import ImmyyFooter from "@/components/immyy/ImmyyFooter";
+import CartSidebar from "@/components/immyy/CartSidebar";
+import WhatsAppFloat from "@/components/immyy/WhatsAppFloat";
+import HeroSection from "@/components/immyy/HeroSection";
+import CategoryGrid from "@/components/immyy/CategoryGrid";
+import FeaturedProducts from "@/components/immyy/FeaturedProducts";
+import StatsSection from "@/components/immyy/StatsSection";
+import WhyChooseUs from "@/components/immyy/WhyChooseUs";
+import CTASection from "@/components/immyy/CTASection";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
-      <main className="pt-6">
-        <FiftyFiftySection />
-        <ProductCarousel />
-        <LargeHero />
-        <OneThirdTwoThirdsSection />
-        <EditorialSection />
+      <ImmyyHeader />
+      <CartSidebar />
+      <WhatsAppFloat />
+
+      <main>
+        <HeroSection />
+        <CategoryGrid />
+        <FeaturedProducts />
+        <StatsSection />
+        <WhyChooseUs />
+        <CTASection />
       </main>
-      
-      <Footer />
+
+      <ImmyyFooter />
     </div>
   );
 };

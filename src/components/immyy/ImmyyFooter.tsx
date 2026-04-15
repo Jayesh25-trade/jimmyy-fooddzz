@@ -49,7 +49,7 @@ const ImmyyFooter = () => {
             </a>
             <p className="text-muted-foreground text-xs mt-4 leading-relaxed">
               hello@jimmyfooddzz.com<br />
-              +91 99999 99999
+              +91 86056 01801
             </p>
           </div>
         </div>

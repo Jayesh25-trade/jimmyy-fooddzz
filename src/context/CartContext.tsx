@@ -16,17 +16,24 @@ interface CartContextType {
   totalPrice: number;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
+  address: string;
+  setAddress: (address: string) => void;
+  paymentMethod: "cod" | "upi";
+  setPaymentMethod: (method: "cod" | "upi") => void;
   getWhatsAppMessage: () => string;
   getWhatsAppLink: () => string;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const WHATSAPP_NUMBER = "919999999999"; // Replace with actual number
+const WHATSAPP_NUMBER = "918605601801";
+const UPI_ID = "jayeshneo07@oksbi";
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [address, setAddress] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState<"cod" | "upi">("cod");
 
   const addToCart = (product: Product, quantity = 1) => {
     setItems((prev) => {
@@ -68,9 +75,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     if (items.length === 0) return "";
     let msg = "*Order from Jimmy Fooddzz*\n\n";
     items.forEach((item) => {
-      msg += `${item.product.name} x${item.quantity} — ₹${item.product.price * item.quantity}\n`;
+      msg += `${item.product.name} x${item.quantity} -- Rs.${item.product.price * item.quantity}\n`;
     });
-    msg += `\n*Total: ₹${totalPrice}*\n\nPlease confirm my order.`;
+    msg += `\n*Total: Rs.${totalPrice}*\n`;
+    msg += `\n*Payment: ${paymentMethod === "upi" ? `UPI (${UPI_ID})` : "Cash on Delivery"}*\n`;
+    if (address.trim()) {
+      msg += `\n*Delivery Address:*\n${address.trim()}\n`;
+    }
+    msg += `\nPlease confirm my order.`;
     return msg;
   };
 
@@ -84,6 +96,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       value={{
         items, addToCart, removeFromCart, updateQuantity, clearCart,
         totalItems, totalPrice, isCartOpen, setIsCartOpen,
+        address, setAddress, paymentMethod, setPaymentMethod,
         getWhatsAppMessage, getWhatsAppLink,
       }}
     >

@@ -39,7 +39,7 @@ const ImmyyFooter = () => {
           <div>
             <h4 className="font-heading font-medium text-foreground text-xs tracking-wide uppercase mb-4">Order Now</h4>
             <a
-              href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20order%20from%20Jimmy%20Fooddzz!"
+              href="https://wa.me/918605601801?text=Hi,%20I%20want%20to%20order%20from%20Jimmy%20Fooddzz."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded text-xs font-heading font-medium transition-colors"
@@ -49,7 +49,7 @@ const ImmyyFooter = () => {
             </a>
             <p className="text-muted-foreground text-xs mt-4 leading-relaxed">
               hello@jimmyfooddzz.com<br />
-              +91 99999 99999
+              +91 86056 01801
             </p>
           </div>
         </div>

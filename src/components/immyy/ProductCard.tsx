@@ -12,8 +12,8 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
 
-  const whatsappLink = `https://wa.me/919999999999?text=${encodeURIComponent(
-    `Hi! I'd like to order:\n\n${product.name} — ₹${product.price}\n\nPlease confirm!`
+  const whatsappLink = `https://wa.me/918605601801?text=${encodeURIComponent(
+    `Hi, I'd like to order:\n\n${product.name} -- Rs.${product.price}\n\nPlease confirm.`
   )}`;
 
   return (

@@ -28,8 +28,8 @@ const ImmyyProductDetail = () => {
   }
 
   const category = categories.find((c) => c.id === product.category);
-  const whatsappLink = `https://wa.me/919999999999?text=${encodeURIComponent(
-    `Hi! I'd like to order:\n\n${product.name} x${quantity} — ₹${product.price * quantity}\n\nPlease confirm!`
+  const whatsappLink = `https://wa.me/918605601801?text=${encodeURIComponent(
+    `Hi, I'd like to order:\n\n${product.name} x${quantity} -- Rs.${product.price * quantity}\n\nPlease confirm.`
   )}`;
 
   return (

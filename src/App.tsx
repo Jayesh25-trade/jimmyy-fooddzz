@@ -14,6 +14,7 @@ import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
+// App root
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>

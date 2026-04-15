@@ -6,17 +6,17 @@ const FeaturedProducts = () => {
   const featured = getFeaturedProducts();
 
   return (
-    <section id="products" className="py-20 px-4">
+    <section id="products" className="py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-14"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-accent font-heading text-xs tracking-[0.3em] uppercase mb-3">Curated Selection</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <p className="text-accent font-heading text-[11px] tracking-[0.4em] uppercase mb-3">Curated Selection</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
             Featured Products
           </h2>
         </motion.div>
@@ -25,10 +25,10 @@ const FeaturedProducts = () => {
           {featured.map((product, i) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
             >
               <ProductCard product={product} />
             </motion.div>
